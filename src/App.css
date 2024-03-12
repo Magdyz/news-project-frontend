@@ -7,6 +7,10 @@ body {
   flex-direction: column;
 }
 
+.App {
+    width: 80vw;
+}
+
 .articlesHome {
   display: flex;
   flex-direction: column;
@@ -28,4 +32,14 @@ body {
   align-items: center;
   border-radius: 22px;
   font-size: small;
+}
+
+.singleArticle {
+    width: 69vw;
+    display: flex;
+    flex-direction: column;
+}
+img {
+    width: 80vw;
+    border-radius: 6px;
 }

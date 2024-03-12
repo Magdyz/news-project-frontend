@@ -1,22 +1,27 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-axios;
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { TopicContext } from "./context/TopicContext";
 
 function Topics() {
-  const [topic, setTopic] = useState([]);
+  const [topics, setTopics] = useState(["coding", "football", "cooking"]);
+  const { currentTopic, setCurrentTopic } = useContext(TopicContext);
 
   useEffect(() => {
     axios
       .get("https://project-nc-news-xu65.onrender.com/api/topics")
       .then(({ data }) => {
-        setTopic(data.topics);
-        console.log(data.topics);
+        setTopics(data.topics);
       });
-  }, []);
+  }, [currentTopic]);
   return (
     <div className="topicsBar">
-      {topic.map((eachTopic) => {
-        return <h2 className="topicElements">{eachTopic.slug}</h2>;
+      {topics.map((eachTopic, index) => {
+        return (
+          <h2 className="topicElements" key={index}>
+            <Link to={eachTopic.slug}>{eachTopic.slug}</Link>
+          </h2>
+        );
       })}
     </div>
   );
