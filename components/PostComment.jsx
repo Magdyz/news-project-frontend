@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
 
 const PostComment = ({ article_id }) => {
   const [postComment, setPostComment] = useState("");
   const [username, setUsername] = useState("");
   const [posted, setPosted] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const postUsernameComment = (username, body) => {
     axios
@@ -13,6 +15,11 @@ const PostComment = ({ article_id }) => {
         `https://project-nc-news-xu65.onrender.com/api/articles/${article_id}/comments`,
         { username: username, body: body }
       )
+      .then(({ data }) => {
+        if ({ data }) {
+          data ? setLoading(false) : null;
+        }
+      })
       .catch((error) => {
         console.log("Posting Error", error);
         setError("User not found, try registering!");
@@ -23,6 +30,7 @@ const PostComment = ({ article_id }) => {
     if (username && postComment && posted) {
       postUsernameComment(username, postComment);
       setPosted(false);
+      setLoading(false);
     }
   }, [article_id, postComment, username]);
 
@@ -50,6 +58,7 @@ const PostComment = ({ article_id }) => {
             setPosted(true);
             postUsernameComment(username, postComment);
             clearForms();
+            loading ? <CircularProgress /> : null;
           }}
         >
           post comment
