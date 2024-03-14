@@ -13,11 +13,10 @@ const VoteArticle = ({ article_id, article }) => {
         { inc_votes: 1 }
       )
       .then(({ data }) => {
-        console.log({ data });
         setVote((prevVote) => prevVote + 1);
       })
-        .catch((err) => {
-          setVote((prevVote) => prevVote - 1);
+      .catch((err) => {
+        setVote((prevVote) => prevVote - 1);
         return Promise.reject(new Error(err));
       });
   };
