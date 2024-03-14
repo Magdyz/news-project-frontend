@@ -13,10 +13,7 @@ const VoteArticle = ({ article_id, article }) => {
         `https://project-nc-news-xu65.onrender.com/api/articles/${article_id}`,
         { inc_votes: 1 }
       )
-      .then(({ data }) => {})
       .catch((err) => {
-        setVote(vote - 1);
-
         return Promise.reject(new Error(err));
       });
   };

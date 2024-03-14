@@ -121,3 +121,17 @@ input {
   width: 11em;
   justify-content: space-between;
 }
+
+.headerElements {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sorting {
+  display: flex;
+  justify-content: center;
+}
+.ascDesc {
+  display: flex;
+  justify-content: center;
+}

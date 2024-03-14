@@ -12,7 +12,7 @@ const Article = () => {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const { article_id } = useParams();
-
+  const [commentPosted, setCommentPosted] = useState(false);
   useEffect(() => {
     axios
       .get(
@@ -22,7 +22,7 @@ const Article = () => {
         setArticle(data.article);
         setLoading(false);
       });
-  }, []);
+  }, [commentPosted, article_id]);
   if (loading) {
     return (
       <Box sx={{ display: "flex" }}>
@@ -44,9 +44,12 @@ const Article = () => {
           <VoteArticle article_id={article.article_id} article={article} />
         </div>
       </ArticleStyling>
-      <PostComment article_id={article_id} />
+      <PostComment
+        article_id={article_id}
+        setCommentPosted={setCommentPosted}
+      />
 
-      <Comments article_id={article.article_id} />
+      <Comments article_id={article.article_id} commentPosted={commentPosted} />
     </div>
   );
 };

@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
 
-const PostComment = ({ article_id }) => {
+const PostComment = ({ article_id, setCommentPosted }) => {
+  const { currentUser } = useContext(UserContext);
   const [postComment, setPostComment] = useState("");
   const [username, setUsername] = useState("");
   const [posted, setPosted] = useState(false);
@@ -10,6 +13,7 @@ const PostComment = ({ article_id }) => {
   const [loading, setLoading] = useState(true);
 
   const postUsernameComment = (username, body) => {
+    currentUser ? setUsername(currentUser) : username;
     axios
       .post(
         `https://project-nc-news-xu65.onrender.com/api/articles/${article_id}/comments`,
@@ -31,6 +35,7 @@ const PostComment = ({ article_id }) => {
       postUsernameComment(username, postComment);
       setPosted(false);
       setLoading(false);
+      setCommentPosted(true);
     }
   }, [article_id, postComment, username]);
 
