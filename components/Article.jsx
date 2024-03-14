@@ -5,9 +5,12 @@ import formatDate from "../utils/dateFormatter";
 import Comments from "./Comments";
 import ArticleStyling from "./styling/ArticleStyling";
 import PostComment from "./PostComment";
+import VoteArticle from "./VoteArticle";
+import { Box, CircularProgress } from "@mui/material";
 
 const Article = () => {
   const [article, setArticle] = useState({});
+  const [loading, setLoading] = useState(true);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -17,8 +20,16 @@ const Article = () => {
       )
       .then(({ data }) => {
         setArticle(data.article);
+        setLoading(false);
       });
   }, []);
+  if (loading) {
+    return (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <div className="singleArticle">
@@ -27,12 +38,10 @@ const Article = () => {
         <img src={article.article_img_url} alt="" />
         <p>{article.body}</p>
         <p>author: {article.author}</p>
+        <p>created: {formatDate(article.created_at)}</p>
         <div className="footerComments">
-          <p>created: {formatDate(article.created_at)}</p>
-        </div>
-        <div className="footerComments">
-          <h3>votes: {article.votes}</h3>
           <h3>{article.comment_count} comments</h3>
+          <VoteArticle article_id={article.article_id} article={article} />
         </div>
       </ArticleStyling>
       <PostComment article_id={article_id} />

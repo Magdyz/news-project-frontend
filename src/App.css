@@ -82,10 +82,10 @@ img {
 
 .footerComments {
   display: flex;
-  flex-direction: row;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: x-small;
+  align-items: center;
 }
 
 p {
@@ -93,6 +93,7 @@ p {
 }
 .postCommentInput {
   height: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -111,4 +112,12 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.voteIcon {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 11em;
+  justify-content: space-between;
 }

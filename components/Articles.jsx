@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import formatDate from "../utils/dateFormatter";
 import { Link } from "react-router-dom";
 import ArticleStyling from "./styling/ArticleStyling";
-import { CircularProgress } from "@mui/material";
-
+import { Box, CircularProgress } from "@mui/material";
+import VoteArticle from "./VoteArticle";
 
 const Articles = ({ topic }) => {
   const [articles, setArticles] = useState([]);
@@ -23,14 +23,16 @@ const Articles = ({ topic }) => {
             })
           );
         }
-        setLoading(false)
+        setLoading(false);
       });
   }, []);
 
   return (
     <div className="feed">
       {loading ? (
-        <CircularProgress />
+        <Box sx={{ display: "flex" }}>
+          <CircularProgress />
+        </Box>
       ) : (
         articles.map((article, index) => {
           return (
@@ -42,9 +44,15 @@ const Articles = ({ topic }) => {
                   <img src={article.article_img_url} alt="" />
                 </Link>
                 <p>created: {formatDate(article.created_at)}</p>
+
                 <div className="footerComments">
-                  <h3>{article.votes} votes</h3>
                   <h3>{article.comment_count} comments</h3>
+                  <div className="voteIcon">
+                    <VoteArticle
+                      article_id={article.article_id}
+                      article={article}
+                    />
+                  </div>
                 </div>
               </div>
             </ArticleStyling>
