@@ -27,7 +27,6 @@ const VoteArticle = ({ article_id, article }) => {
 
       <button
         onClick={() => {
-          setVote(vote + 1);
           addVote(article_id);
         }}
       >
