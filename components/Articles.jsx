@@ -13,6 +13,7 @@ const Articles = ({ topic }) => {
   const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("asc");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     axios
@@ -43,9 +44,16 @@ const Articles = ({ topic }) => {
 
         setArticles(sortedArticles);
         setLoading(false);
+      })
+      .catch((error) => {
+        setError(true);
+        setLoading(false);
       });
   }, [sortBy, order, topic]);
 
+  if (error) {
+    return <NotFound />;
+  }
   return (
     <div className="feed">
       <div className="ascDesc">

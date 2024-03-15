@@ -165,3 +165,8 @@ button {
 p.message {
   margin-right: 2em;
 }
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover {
+    background: gainsboro;
+    border-radius: 20px;
+    width: 1.5em;
+}

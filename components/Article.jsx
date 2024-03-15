@@ -7,12 +7,15 @@ import ArticleStyling from "./styling/ArticleStyling";
 import PostComment from "./PostComment";
 import VoteArticle from "./VoteArticle";
 import { Box, CircularProgress } from "@mui/material";
+import NotFound from "./NotFound";
 
 const Article = () => {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const { article_id } = useParams();
   const [commentPosted, setCommentPosted] = useState(false);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
     axios
       .get(
@@ -20,6 +23,10 @@ const Article = () => {
       )
       .then(({ data }) => {
         setArticle(data.article);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(true);
         setLoading(false);
       });
   }, [commentPosted, article_id]);
@@ -30,7 +37,9 @@ const Article = () => {
       </Box>
     );
   }
-
+  if (error) {
+    return <NotFound />;
+  }
   return (
     <div className="singleArticle">
       <ArticleStyling>
