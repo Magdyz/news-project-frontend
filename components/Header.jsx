@@ -9,8 +9,8 @@ const Header = () => {
         <Link to="/">
           <h2>NC News</h2>
         </Link>
-        <Login />
       </div>
+      <Login />
       <Topics />
     </>
   );

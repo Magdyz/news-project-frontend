@@ -12,26 +12,39 @@ const Articles = ({ topic }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState("created_at");
-  const [order, setOrder] = useState("asc")
+  const [order, setOrder] = useState("asc");
 
   useEffect(() => {
     axios
-      .get(
-        `https://project-nc-news-xu65.onrender.com/api/articles?sorted_by=${sortBy}&order=${order}`
-      )
+      .get(`https://project-nc-news-xu65.onrender.com/api/articles`)
       .then(({ data }) => {
-        if (!topic) {
-          setArticles(data.articles);
-        } else {
-          setArticles(
-            data.articles.filter((articleBytopic) => {
-              return articleBytopic.topic === topic;
-            })
+        let sortedArticles = data.articles;
+
+        sortedArticles.sort((a, b) => {
+          if (sortBy === "created_at") {
+            return new Date(a.created_at) - new Date(b.created_at);
+          } else if (sortBy === "comment_count") {
+            return a.comment_count - b.comment_count;
+          } else if (sortBy === "votes") {
+            return a.votes - b.votes;
+          }
+          return 0;
+        });
+
+        if (order === "desc") {
+          sortedArticles.reverse();
+        }
+
+        if (topic) {
+          sortedArticles = sortedArticles.filter(
+            (article) => article.topic === topic
           );
         }
+
+        setArticles(sortedArticles);
         setLoading(false);
       });
-  }, [sortBy, articles]);
+  }, [sortBy, order, topic]);
 
   return (
     <div className="feed">
@@ -42,14 +55,14 @@ const Articles = ({ topic }) => {
               setOrder("asc");
             }}
           >
-            <KeyboardArrowDownIcon/>
+            <KeyboardArrowDownIcon />
           </Button>
           <Button
             onClick={() => {
               setOrder("desc");
             }}
           >
-            <KeyboardArrowUpIcon/>
+            <KeyboardArrowUpIcon />
           </Button>
         </ButtonGroup>
       </div>

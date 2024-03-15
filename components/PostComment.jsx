@@ -6,67 +6,51 @@ import { UserContext } from "./context/UserContext";
 
 const PostComment = ({ article_id, setCommentPosted }) => {
   const { currentUser } = useContext(UserContext);
-  const [postComment, setPostComment] = useState("");
   const [username, setUsername] = useState("");
-  const [posted, setPosted] = useState(false);
+  const [postComment, setPostComment] = useState("");
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isPosting, setIsPosting] = useState(false); 
 
   const postUsernameComment = (username, body) => {
-    currentUser ? setUsername(currentUser) : username;
+    setIsPosting(true); 
     axios
       .post(
         `https://project-nc-news-xu65.onrender.com/api/articles/${article_id}/comments`,
         { username: username, body: body }
       )
-      .then(({ data }) => {
-        if ({ data }) {
-          data ? setLoading(false) : null;
-        }
+      .then(() => {
+        setCommentPosted(true); 
+        setIsPosting(false); // 
       })
       .catch((error) => {
         console.log("Posting Error", error);
         setError("User not found, try registering!");
+        setIsPosting(false); 
       });
-  };
-
-  useEffect(() => {
-    if (username && postComment && posted) {
-      postUsernameComment(username, postComment);
-      setPosted(false);
-      setLoading(false);
-      setCommentPosted(true);
-    }
-  }, [article_id, postComment, username]);
-
-  const clearForms = () => {
-    setUsername("");
-    setPostComment("");
   };
 
   return (
     <>
       <div className="postCommentInput">
+        <input className="postTextBox"
+          placeholder="post a comment..."
+          value={postComment}
+          onChange={(e) => setPostComment(e.target.value)}
+        />
         <input
           placeholder="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-
-        <input
-          placeholder="post a comment..."
-          value={postComment}
-          onChange={(e) => setPostComment(e.target.value)}
-        />
         <button
           onClick={() => {
-            setPosted(true);
             postUsernameComment(username, postComment);
-            clearForms();
-            loading ? <CircularProgress /> : null;
+            setUsername("");
+            setPostComment("");
           }}
+          disabled={isPosting}
         >
-          post comment
+          {isPosting ? <CircularProgress size={24} /> : "Post comment"}
         </button>
       </div>
       {error && <p>{error}</p>}

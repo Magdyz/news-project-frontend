@@ -9,7 +9,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [submittedValue, setSubmittedValue] = useState("");
-
+  const [userMessage, setUserMessage] = useState("");
 
   const checkValidUser = (user) => {
     setLoading(true);
@@ -17,8 +17,13 @@ const Login = () => {
       .get(`https://project-nc-news-xu65.onrender.com/api/users`)
       .then(({ data }) => {
         const usersList = data.users.map((eachUser) => eachUser.username);
-        setValid(usersList.includes(user));
+        const isValidUser = usersList.includes(user);
+        setValid(isValidUser);
+        setUserMessage(isValidUser ? "" : "User not found, please register!");
         setLoading(false);
+        if (!isValidUser) {
+          setTimeout(() => setUserMessage(""), 5000);
+        }
       })
       .catch((error) => {
         console.error("Error checking user validity:", error);
@@ -30,27 +35,28 @@ const Login = () => {
     setCurrentUser(inputValue);
     checkValidUser(inputValue);
     setSubmittedValue(inputValue);
-    setInputValue(""); // Clear input box after submission
+    setInputValue("");
   };
-
-  if (loading) {
-    return (
-      <Box sx={{ display: "flex" }}>
-        <CircularProgress />
-      </Box>
-    );
-  }
 
   return (
     <>
       <div className="login">
-        {valid ? <p>Welcome {submittedValue}</p> : null}
+        {valid ? <p>Welcome back {submittedValue}</p> : null}
+        {userMessage && <p>{userMessage}</p>}
         <Input
+          label={!valid ? "Standard warning" : null}
+          variant="standard"
+          color="warning"
           placeholder="type username..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-        ></Input>
+        />
         <Button onClick={handleLogin}>Login</Button>
+        {loading && (
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress />
+          </Box>
+        )}
       </div>
     </>
   );

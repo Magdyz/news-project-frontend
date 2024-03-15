@@ -46,11 +46,12 @@ body {
   width: 86vw;
   display: flex;
   justify-content: center;
-  margin: 1em;
+  margin: 0.4em;
   border-radius: 13px;
   flex-direction: column;
   padding: 10px;
   align-items: center;
+  box-shadow: 1px 3px #dddddd75;
 }
 
 .singleArticle {
@@ -102,7 +103,7 @@ p {
 }
 
 input {
-  height: 5vh;
+  height: 3vh;
 }
 
 .loadingBar {
@@ -123,9 +124,10 @@ input {
 }
 
 .headerElements {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    height: 2em;
+    align-items: center;
+    flex-direction: row;
 }
 .sorting {
   display: flex;
@@ -134,4 +136,18 @@ input {
 .ascDesc {
   display: flex;
   justify-content: center;
+}
+input.postTextBox {
+    width: 90%;
+    height: 3em;
+}
+
+.MuiButtonGroup-root.MuiButtonGroup-outlined.css-edsu1d-MuiButtonGroup-root {
+    margin: 4px;
+}
+.login {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
 }
