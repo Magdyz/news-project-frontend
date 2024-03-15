@@ -41,8 +41,10 @@ const Login = () => {
   return (
     <>
       <div className="login">
-        {valid ? <p>Welcome back {submittedValue}</p> : null}
-        {userMessage && <p>{userMessage}</p>}
+        {valid ? (
+          <p className="message">Welcome back {submittedValue}</p>
+        ) : null}
+        {userMessage && <p className="message">{userMessage}</p>}
         <Input
           label={!valid ? "Standard warning" : null}
           variant="standard"

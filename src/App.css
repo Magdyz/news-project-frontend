@@ -1,14 +1,16 @@
 body {
   margin: 0;
   display: flex;
-  align-content: space-around;
   width: 100%;
   flex-wrap: wrap;
   flex-direction: column;
+  font-family: monospace;
+  align-content: center;
 }
 
 .App {
   width: 80vw;
+  margin-top: 1em;
 }
 
 .feed {
@@ -124,10 +126,10 @@ input {
 }
 
 .headerElements {
-    display: flex;
-    height: 2em;
-    align-items: center;
-    flex-direction: row;
+  display: flex;
+  height: 2em;
+  align-items: center;
+  flex-direction: row;
 }
 .sorting {
   display: flex;
@@ -138,16 +140,28 @@ input {
   justify-content: center;
 }
 input.postTextBox {
-    width: 90%;
-    height: 3em;
+  width: 90%;
+  height: 3em;
 }
 
 .MuiButtonGroup-root.MuiButtonGroup-outlined.css-edsu1d-MuiButtonGroup-root {
-    margin: 4px;
+  margin: 4px;
 }
 .login {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+button {
+  border: none;
+  background: bottom;
+}
+
+p.message {
+  margin-right: 2em;
 }

@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 
 const DeleteComment = ({ comment, setOnDelete }) => {
   const { currentUser } = useContext(UserContext);
@@ -22,7 +24,13 @@ const DeleteComment = ({ comment, setOnDelete }) => {
   return (
     <>
       {comment.author === currentUser ? (
-        <Button onClick={() => deleteCommentById(comment.comment_id)}>x</Button>
+        <IconButton
+          onClick={() => deleteCommentById(comment.comment_id)}
+          aria-label="delete"
+          size="small"
+        >
+          <DeleteIcon fontSize="inherit" />
+        </IconButton>
       ) : null}
     </>
   );

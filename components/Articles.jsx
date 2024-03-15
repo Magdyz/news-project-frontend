@@ -51,6 +51,7 @@ const Articles = ({ topic }) => {
       <div className="ascDesc">
         <ButtonGroup variant="outlined" aria-label="Basic button group">
           <Button
+            size="small"
             onClick={() => {
               setOrder("asc");
             }}
@@ -58,6 +59,7 @@ const Articles = ({ topic }) => {
             <KeyboardArrowDownIcon />
           </Button>
           <Button
+            size="small"
             onClick={() => {
               setOrder("desc");
             }}
@@ -69,6 +71,7 @@ const Articles = ({ topic }) => {
       <div className="sorting">
         <ButtonGroup variant="outlined" aria-label="Basic button group">
           <Button
+            size="small"
             onClick={() => {
               setSortBy("created_at");
             }}
@@ -76,6 +79,7 @@ const Articles = ({ topic }) => {
             date
           </Button>
           <Button
+            size="small"
             onClick={() => {
               setSortBy("comment_count");
             }}
@@ -83,6 +87,7 @@ const Articles = ({ topic }) => {
             comment count
           </Button>
           <Button
+            size="small"
             onClick={() => {
               setSortBy("votes");
             }}
