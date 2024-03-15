@@ -42,4 +42,4 @@ This project demonstrates the ability to connect a backend API to a frontend app
 ### Links
 
 - **Backend API:** [https://api1.magz.dev/](https://api1.magz.dev/)
-- **View the Project:** [https://projncnews.netlify.app/cooking](https://projncnews.netlify.app/cooking)
+- **View the Project:** [https://ncnews.magz.dev/](https://ncnews.magz.dev)
