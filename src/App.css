@@ -166,6 +166,7 @@ p.message {
   margin-right: 2em;
 }
 
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv:hover  {
-    color: blueviolet;
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover {
+  color: blueviolet;
+  cursor: pointer;
 }
