@@ -117,9 +117,8 @@ const Articles = ({ topic }) => {
                 boxShadow: "1px 3px #dddddd75",
               }}
             >
-              <Skeleton variant="rectangular" width="100%" height="150px" />
+              <Skeleton variant="rectangular" width="100%" height="250px" />
               <Skeleton variant="text" width="80%" />
-              <Skeleton variant="text" width="60%" />
               <Skeleton variant="text" width="70%" />
             </Box>
           ))}
