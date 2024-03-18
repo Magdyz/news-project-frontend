@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import formatDate from "../utils/dateFormatter";
 import { Link } from "react-router-dom";
 import ArticleStyling from "./styling/ArticleStyling";
-import { Box, Button, ButtonGroup, CircularProgress } from "@mui/material";
+import { Box, Button, ButtonGroup } from "@mui/material";
 import VoteArticle from "./VoteArticle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Skeleton from "@mui/material/Skeleton";
 
 const Articles = ({ topic }) => {
   const [articles, setArticles] = useState([]);
@@ -54,6 +55,7 @@ const Articles = ({ topic }) => {
   if (error) {
     return <NotFound />;
   }
+
   return (
     <div className="feed">
       <div className="ascDesc">
@@ -105,8 +107,22 @@ const Articles = ({ topic }) => {
         </ButtonGroup>
       </div>
       {loading ? (
-        <Box sx={{ display: "flex" }}>
-          <CircularProgress />
+        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          {[1, 2, 3].map((index) => (
+            <Box
+              key={index}
+              sx={{
+                margin: "1em 0",
+                borderRadius: "13px",
+                boxShadow: "1px 3px #dddddd75",
+              }}
+            >
+              <Skeleton variant="rectangular" width="100%" height="150px" />
+              <Skeleton variant="text" width="80%" />
+              <Skeleton variant="text" width="60%" />
+              <Skeleton variant="text" width="70%" />
+            </Box>
+          ))}
         </Box>
       ) : (
         articles.map((article, index) => {
