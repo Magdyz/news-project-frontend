@@ -166,7 +166,13 @@ p.message {
   margin-right: 2em;
 }
 
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover {
-  color: blueviolet;
-  cursor: pointer;
+.likeButton:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+.sortingBar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
 }

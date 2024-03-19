@@ -29,7 +29,7 @@ const VoteArticle = ({ article_id, article }) => {
         }}
       >
         <p>{vote} votes</p>
-        <ThumbUpOffAltIcon />
+        <ThumbUpOffAltIcon className="likeButton" />
       </button>
     </>
   );

@@ -58,53 +58,55 @@ const Articles = ({ topic }) => {
 
   return (
     <div className="feed">
-      <div className="ascDesc">
-        <ButtonGroup variant="outlined" aria-label="Basic button group">
-          <Button
-            size="small"
-            onClick={() => {
-              setOrder("asc");
-            }}
-          >
-            <KeyboardArrowDownIcon />
-          </Button>
-          <Button
-            size="small"
-            onClick={() => {
-              setOrder("desc");
-            }}
-          >
-            <KeyboardArrowUpIcon />
-          </Button>
-        </ButtonGroup>
-      </div>
-      <div className="sorting">
-        <ButtonGroup variant="outlined" aria-label="Basic button group">
-          <Button
-            size="small"
-            onClick={() => {
-              setSortBy("created_at");
-            }}
-          >
-            date
-          </Button>
-          <Button
-            size="small"
-            onClick={() => {
-              setSortBy("comment_count");
-            }}
-          >
-            comment count
-          </Button>
-          <Button
-            size="small"
-            onClick={() => {
-              setSortBy("votes");
-            }}
-          >
-            votes
-          </Button>
-        </ButtonGroup>
+      <div className="sortingBar">
+        <div className="ascDesc">
+          <ButtonGroup variant="outlined" aria-label="Basic button group">
+            <Button
+              size="small"
+              onClick={() => {
+                setOrder("asc");
+              }}
+            >
+              <KeyboardArrowDownIcon />
+            </Button>
+            <Button
+              size="small"
+              onClick={() => {
+                setOrder("desc");
+              }}
+            >
+              <KeyboardArrowUpIcon />
+            </Button>
+          </ButtonGroup>
+        </div>
+        <div className="sorting">
+          <ButtonGroup variant="outlined" aria-label="Basic button group">
+            <Button
+              size="small"
+              onClick={() => {
+                setSortBy("created_at");
+              }}
+            >
+              date
+            </Button>
+            <Button
+              size="small"
+              onClick={() => {
+                setSortBy("comment_count");
+              }}
+            >
+              comment count
+            </Button>
+            <Button
+              size="small"
+              onClick={() => {
+                setSortBy("votes");
+              }}
+            >
+              votes
+            </Button>
+          </ButtonGroup>
+        </div>
       </div>
       {loading ? (
         <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
