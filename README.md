@@ -7,7 +7,7 @@
 
 ### News Project link
 
-[![NC News](https://img.shields.io/badge/NC NEWS_like-blue)](https://ncnews.magz.dev/)
+[![NC News](https://img.shields.io/badge/NC_NEWS_Project)](https://ncnews.magz.dev/)
 
 
 
