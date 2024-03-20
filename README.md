@@ -1,5 +1,16 @@
 ## NC News Project
 
+[![React](https://img.shields.io/badge/-React-blue)](https://reactjs.org/)
+[![HTML](https://img.shields.io/badge/-HTML-orange)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS](https://img.shields.io/badge/-CSS-blueviolet)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Netlify](https://img.shields.io/badge/-Netlify-brightgreen)](https://www.netlify.com/)
+
+### News Project link
+
+[![NC News](https://img.shields.io/badge/any_text-you_like-blue)](https://ncnews.magz.dev/)
+
+
+
 This project demonstrates the ability to connect a backend API to a frontend application, creating RESTful APIs, and building a full-stack experience. The project showcases various components and functionalities, including user authentication, article browsing, commenting, voting, and topic filtering.
 
 ### Technologies Used
