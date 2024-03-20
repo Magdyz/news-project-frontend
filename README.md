@@ -6,7 +6,8 @@
 [![Netlify](https://img.shields.io/badge/-Netlify-brightgreen)](https://www.netlify.com/)
 
 ### News Project link
-![NC News](https://img.shields.io/website?url=https%3A%2F%2Fncnews.magz.dev)
+![NC News]()
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fncnews.magz.dev)](https://ncnews.magz.dev)
 
 
 
