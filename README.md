@@ -3,7 +3,7 @@
 [![React](https://img.shields.io/badge/-React-blue)](https://reactjs.org/)
 [![HTML](https://img.shields.io/badge/-HTML-orange)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS](https://img.shields.io/badge/-CSS-blueviolet)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![Netlify](https://img.shields.io/badge/-Netlify-brightgreen)](https://www.netlify.com/)
+[![Netlify](https://img.shields.io/badge/-Netlify-brightgreen)](https://ncnews.magz.dev)
 
 ### News Project link
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fncnews.magz.dev)](https://ncnews.magz.dev)
